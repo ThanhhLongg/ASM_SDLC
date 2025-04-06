@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -24,7 +24,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             document.querySelector("form").addEventListener("submit", function (event) {
-                event.preventDefault(); // Ngăn chặn form submit bình thường
+                event.preventDefault(); // Prevent normal form submission
 
                 let fullName = document.querySelector("input[name='full_name']").value.trim();
                 let password = document.querySelector("input[name='password']").value.trim();
@@ -39,16 +39,16 @@
                 })
                     .then(response => response.text())
                     .then(data => {
-                        let result = data.trim(); // Loại bỏ khoảng trắng không mong muốn
+                        let result = data.trim(); // Remove unwanted whitespace
 
                         if (result === "admin") {
                             alert("Admin login successful!");
-                            window.location.href = "admin/index.php"; // Chuyển đến trang quản lý tài khoản
+                            window.location.href = "admin/index.php"; // Redirect to account management page
                         } else if (result === "user") {
                             alert("Login successful!");
-                            window.location.href = "ASM1/Index.html"; // Chuyển đến trang bán hàng
+                            window.location.href = "ASM1/Index.html"; // Redirect to sales page
                         } else {
-                            alert("Login error: " + result); // Thông báo lỗi
+                            alert("Login error: " + result); // Error notification
                         }
 
                     })
