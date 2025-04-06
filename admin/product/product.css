@@ -117,14 +117,16 @@ table img {
 /* ACTION BUTTONS */
 .edit-btn,
 .delete-btn {
-    padding: 8px 12px;
+    display: block; /* Đặt các nút trên từng hàng */
+    width: 100%; /* Chiều rộng của các nút bằng nhau */
+    padding: 10px;
     border: none;
     border-radius: 6px;
     color: #fff;
     font-size: 14px;
     cursor: pointer;
-    margin: 2px;
     font-weight: 600;
+    margin-bottom: 10px; /* Khoảng cách giữa các nút */
     transition: 0.3s ease;
 }
 

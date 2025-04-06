@@ -1,23 +1,23 @@
 <?php
 session_start();
-require 'connect.php'; // Kết nối database
+require 'connect.php'; // Connect to database
 
-// Tài khoản admin mặc định
+// Default admin account
 $admin_username = "admin";
 $admin_password = "123";
 
-// Lấy dữ liệu từ form
+// Get data from form
 $full_name = trim($_POST["full_name"] ?? "");
 $password = trim($_POST["password"] ?? "");
 
-// Kiểm tra nếu là admin
+// Check if admin
 if ($full_name === $admin_username && $password === $admin_password) {
-    $_SESSION["username"] = $full_name; // Lưu session đăng nhập
-    echo "admin"; // Trả về giá trị để JavaScript xử lý
+    $_SESSION["username"] = $full_name; // Save login session
+    echo "admin"; // Return value for JavaScript to handle
     exit;
 }
 
-// Kiểm tra tài khoản user trong database
+// Check user account in database
 $sql = "SELECT password FROM users WHERE user_name = ?";
 $stmt = mysqli_prepare($conn, $sql);
 
@@ -30,10 +30,10 @@ if ($stmt) {
         mysqli_stmt_bind_result($stmt, $hashed_password);
         mysqli_stmt_fetch($stmt);
 
-        // Kiểm tra mật khẩu
+        // Check password
         if (password_verify($password, $hashed_password)) {
             $_SESSION["username"] = $full_name;
-            echo "user"; // Phản hồi để JavaScript xử lý
+            echo "user"; // Response for JavaScript to handle
         } else {
             echo "Invalid password!";
         }

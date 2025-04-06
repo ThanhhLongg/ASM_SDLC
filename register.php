@@ -1,5 +1,5 @@
 <?php
-// Kết nối database
+// Connect to the database
 require 'connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -8,13 +8,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = trim($_POST["phone"]);
     $address = trim($_POST["address"]);
 
-    // Kiểm tra trường bắt buộc
+    // Check required fields
     if (empty($full_name) || empty($password)) {
-        echo "Họ tên và mật khẩu không được để trống!";
+        echo "Full name and password must not be empty!";
         exit();
     }
 
-    // Kiểm tra xem tài khoản đã tồn tại chưa
+    // Check if username already exists
     $check_sql = "SELECT user_name FROM users WHERE user_name = ?";
     $check_stmt = mysqli_prepare($conn, $check_sql);
     if ($check_stmt) {
@@ -23,37 +23,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_stmt_store_result($check_stmt);
 
         if (mysqli_stmt_num_rows($check_stmt) > 0) {
-            echo "Tên tài khoản đã tồn tại! Vui lòng chọn tên khác.";
+            echo "Username already exists! Please choose another one.";
             mysqli_stmt_close($check_stmt);
             exit();
         }
         mysqli_stmt_close($check_stmt);
     } else {
-        echo "Lỗi khi kiểm tra tài khoản: " . mysqli_error($conn);
+        echo "Error checking username: " . mysqli_error($conn);
         exit();
     }
 
-    // Mã hóa mật khẩu trước khi lưu vào database
+    // Hash the password before storing into the database
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Chèn dữ liệu vào database
+    // Insert data into the database
     $sql = "INSERT INTO users (user_name, password, phone, address) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
     if ($stmt) {
         mysqli_stmt_bind_param($stmt, "ssss", $full_name, $hashed_password, $phone, $address);
         if (mysqli_stmt_execute($stmt)) {
-            echo "Đăng ký thành công! Đang chuyển hướng...";
+            echo "Registration successful! Redirecting...";
             header("refresh:2; url=http://localhost/SDLC/login.html");
             exit();
         } else {
-            echo "Lỗi khi đăng ký: " . mysqli_error($conn);
+            echo "Error during registration: " . mysqli_error($conn);
         }
         mysqli_stmt_close($stmt);
     } else {
-        echo "Lỗi khi chuẩn bị câu lệnh: " . mysqli_error($conn);
+        echo "Error preparing statement: " . mysqli_error($conn);
     }
 }
 
-// Đóng kết nối database
+// Close the database connection
 mysqli_close($conn);
 ?>

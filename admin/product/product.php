@@ -121,7 +121,7 @@ foreach ($images as $img) {
             <td><?= $row['description'] ?></td>
             <td><?= $row['category_id'] ?></td>
             <td><?= $row['stock_quantity'] ?></td>
-            <td><img src="../ImageWeb/<?= $row['image_url'] ?>" alt="product image" width="50" height="50"></td>
+            <td><img src="/SDLC/ImageWeb/<?= $row['image_url'] ?>" alt="product image" width="50" height="50"></td>
             <td>
                 <button class="btn edit-btn" onclick="editProduct('<?= $row['product_id'] ?>', '<?= $row['product_name'] ?>', '<?= $row['price'] ?>', '<?= $row['description'] ?>', '<?= $row['category_id'] ?>', '<?= $row['stock_quantity'] ?>', '<?= $row['image_url'] ?>')">✏ Edit</button>
                 <a href="?delete=<?= $row['product_id'] ?>" class="btn delete-btn" onclick="return confirm('Are you sure you want to delete?');">🗑 Delete</a>

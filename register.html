@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Đăng ký tài khoản</title>
+    <title>Create Account</title>
     <link rel="stylesheet" href="register.css">
 </head>
 <body>
@@ -27,26 +27,26 @@
     <script>
     document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("form").addEventListener("submit", function (event) {
-            event.preventDefault(); // Ngăn chặn reload ngay lập tức
+            event.preventDefault(); // Prevent immediate reload
 
             let fullName = document.querySelector("input[name='full_name']").value;
             let password = document.querySelector("input[name='password']").value;
 
             let newUser = { fullName: fullName, password: password };
 
-            // Lấy danh sách tài khoản từ Local Storage
+            // Get list of accounts from Local Storage
             let users = JSON.parse(localStorage.getItem("users")) || [];
 
-            // Thêm tài khoản mới vào danh sách
+            // Add the new account to the list
             users.push(newUser);
 
-            // Lưu lại vào Local Storage
+            // Save the list back to Local Storage
             localStorage.setItem("users", JSON.stringify(users));
 
             console.log("User saved:", newUser);
-            alert("Tài khoản đã được lưu!");
+            alert("Account has been saved!");
 
-            this.submit(); // Chuyển hướng về server để xử lý đăng ký
+            this.submit(); // Redirect to the server to process registration
         });
     });
 </script>

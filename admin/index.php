@@ -8,7 +8,7 @@
 <body>
     home_page!
 
-    <a href="product.php">
+    <a href="http://localhost/SDLC/admin/product/product.php">
     <button>Product_Mng</button>
     </a>
     <!-- Sử dụng <a> để chuyển hướng sang trang user.php -->
