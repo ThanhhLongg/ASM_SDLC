@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký tài khoản</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+<div class="container">
+    <h2>Create a new account</h2>
+    
+    <form action="register.php" method="POST">
+        <label>Fullname:</label>
+        <input type="text" name="full_name" required>
+
+        <label>Password:</label>
+        <input type="password" name="password" required>
+
+        <label>Phone:</label>
+        <input type="text" name="phone">
+
+        <label>Address:</label>
+        <textarea name="address"></textarea>
+
+        <button type="submit">Sign up</button>
+    </form>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Ngăn chặn reload ngay lập tức
+
+            let fullName = document.querySelector("input[name='full_name']").value;
+            let password = document.querySelector("input[name='password']").value;
+
+            let newUser = { fullName: fullName, password: password };
+
+            // Lấy danh sách tài khoản từ Local Storage
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            // Thêm tài khoản mới vào danh sách
+            users.push(newUser);
+
+            // Lưu lại vào Local Storage
+            localStorage.setItem("users", JSON.stringify(users));
+
+            console.log("User saved:", newUser);
+            alert("Tài khoản đã được lưu!");
+
+            this.submit(); // Chuyển hướng về server để xử lý đăng ký
+        });
+    });
+</script>
+    
+</div>
+</body>
+</html>
