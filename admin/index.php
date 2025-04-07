@@ -11,9 +11,14 @@
     <a href="http://localhost/SDLC/admin/product/product.php">
     <button>Product_Mng</button>
     </a>
-    <!-- Sử dụng <a> để chuyển hướng sang trang user.php -->
     <a href="http://localhost/SDLC/admin/user/user.php">
         <button>User_Mng</button>
+    </a>
+    <a href="http://localhost/SDLC/admin/order/order.php">
+        <button>Order_Mng</button>
+    </a>
+    <a href="http://localhost/SDLC/login.html">
+        <button>Login_Form</button>
     </a>
 
 </body>

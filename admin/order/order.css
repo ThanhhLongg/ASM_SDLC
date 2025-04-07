@@ -1,0 +1,103 @@
+/* Reset một số thuộc tính cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Đặt phông chữ mặc định */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container chính */
+.order-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Tiêu đề chính */
+h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Tiêu đề danh sách người dùng */
+h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Bảng danh sách người dùng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Thêm màu nền cho các tiêu đề cột */
+th {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Bảng lịch sử đơn hàng */
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Liên kết */
+a {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Hiển thị thông tin người dùng */
+.user-info {
+    margin: 20px 0;
+    font-size: 18px;
+    color: #555;
+}
+
+.user-info strong {
+    color: #333;
+}
+
+/* Cột các đơn hàng */
+table th, table td {
+    font-size: 14px;
+    border: 1px solid #ddd;
+}
+
+/* Table responsive */
+@media screen and (max-width: 768px) {
+    .order-container {
+        padding: 15px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+}
